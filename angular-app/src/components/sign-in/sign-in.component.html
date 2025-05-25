@@ -1,0 +1,55 @@
+<div class="dialog-header">
+  <h2 class="dialog-title">
+    <span class="title-icon">
+      <mat-icon>login</mat-icon>
+    </span>
+    Sign In
+  </h2>
+  <div class="color-dots">
+    <span class="color-dot"></span>
+    <span class="color-dot"></span>
+    <span class="color-dot"></span>
+    <span class="color-dot"></span>
+  </div>
+</div>
+
+<mat-dialog-content>
+  <form [formGroup]="addUserForm" (ngSubmit)="signIn()">
+    <mat-form-field appearance="fill">
+      <mat-label>Email</mat-label>
+      <input matInput type="email" formControlName="email">
+      <mat-icon matPrefix>email</mat-icon>
+      
+      @if(addUserForm.get('email')?.touched && addUserForm.get('email')?.invalid) {
+        <mat-error>
+          Email is required and must be valid.
+        </mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Password</mat-label>
+      <input matInput [type]="hidePassword ? 'password' : 'text'" formControlName="password">
+      <mat-icon matPrefix>lock</mat-icon>
+      <mat-icon matSuffix (click)="hidePassword = !hidePassword">
+        {{hidePassword ? 'visibility_off' : 'visibility'}}
+      </mat-icon>
+      
+      @if(addUserForm.get('password')?.touched && addUserForm.get('password')?.invalid) {
+        <mat-error>
+          Password is required and must be at least 4 characters long.
+        </mat-error>
+      }
+    </mat-form-field>
+
+    <div class="dialog-actions">
+      <button mat-button class="cancel-button" type="button" (click)="cancel()">
+        Cancel
+      </button>
+      <button mat-raised-button class="submit-button" type="submit" [disabled]="addUserForm.invalid">
+        <mat-icon>login</mat-icon>
+        Sign In
+      </button>
+    </div>
+  </form>
+</mat-dialog-content>

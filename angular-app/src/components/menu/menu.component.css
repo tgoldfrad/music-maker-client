@@ -1,0 +1,348 @@
+/* Enhanced Menu Styling */
+/* .app-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.25rem 2rem;
+    background-color: white; */
+    /* border-radius: 0; Removed rounded corners */
+    /* box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+    margin-bottom: 2rem;
+    font-family: "Nunito", "Segoe UI", sans-serif; */
+    /* position: relative; For the colorful line */
+  /* } */
+  
+  /* Colorful line at the bottom */
+  /* .app-header::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(to right, #5aa454, #ffa500, #ff5733, #c70039);
+  }
+   */
+  /* Logo styling */
+  /* .app-logo {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  .logo-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #5aa454, #ffa500, #ff5733, #c70039);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 24px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+  
+  .logo-icon::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 50%);
+  }
+  
+  .logo-text {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .app-name {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #333;
+    margin: 0;
+    letter-spacing: -0.5px;
+  }
+  
+  .app-tagline {
+    font-size: 0.85rem;
+    color: #777;
+    margin: 0;
+  }
+  
+  .color-dots {
+    display: flex;
+    margin-top: 0.5rem;
+  }
+  
+  .color-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    margin-right: 4px;
+  }
+  
+  .color-dot:nth-child(1) {
+    background-color: #5aa454;
+  }
+  .color-dot:nth-child(2) {
+    background-color: #ffa500;
+  }
+  .color-dot:nth-child(3) {
+    background-color: #ff5733;
+  }
+  .color-dot:nth-child(4) {
+    background-color: #c70039;
+  } */
+  
+  /* Navigation links container */
+  /* .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 2rem; /* Increased gap between nav items */
+    /* direction: rtl; /* Right-to-left for navigation */
+  /* }
+   */ 
+  /* Style for all navigation links */
+  /* .nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.1rem; Increased font size */
+    /* font-weight: 600;
+    text-decoration: none;
+    padding: 0.5rem 0;
+    position: relative;
+    transition: all 0.2s ease;
+    color: #555;
+  }
+  
+  .nav-item:hover {
+    transform: translateY(-2px);
+  } */
+  
+  /* .nav-item mat-icon {
+    font-size: 22px; 
+    width: 22px;
+    height: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  } */
+  
+  /* Colorful navigation items */
+  /* .nav-item:nth-child(1) {
+    color: #c70039;
+  }
+  .nav-item:nth-child(2) {
+    color: #ff5733;
+  }
+  .nav-item:nth-child(3) {
+    color: #ffa500;
+  }
+  .nav-item:nth-child(4) {
+    color: #5aa454;
+  } */
+  
+  /* Active navigation state */
+  /* .nav-active {
+    position: relative;
+  }
+  
+  .nav-active::after {
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    border-radius: 1.5px;
+  }
+  
+  .nav-item:nth-child(1).nav-active::after {
+    background-color: #c70039;
+  }
+  .nav-item:nth-child(2).nav-active::after {
+    background-color: #ff5733;
+  }
+  .nav-item:nth-child(3).nav-active::after {
+    background-color: #ffa500;
+  }
+  .nav-item:nth-child(4).nav-active::after {
+    background-color: #5aa454;
+  } */
+  
+  /* Responsive adjustments */
+  /* @media (max-width: 768px) {
+    .app-header {
+      flex-direction: column;
+      padding: 1.5rem;
+      gap: 1.5rem;
+    }
+    
+    .app-logo {
+      width: 100%;
+      justify-content: center;
+    }
+    
+    .nav-links {
+      width: 100%;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+  } */
+   /* Enhanced Menu Styling */
+/* Enhanced Menu Styling */
+.app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem 2rem;
+  background-color: white;
+  border-radius: 0; /* Removed rounded corners */
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+  margin-bottom: 2rem;
+  font-family: "Nunito", "Segoe UI", sans-serif;
+  position: relative; /* For the colorful line */
+}
+
+/* Colorful line at the bottom */
+.app-header::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(to right, #5aa454, #ffa500, #ff5733, #c70039);
+}
+
+/* Logo styling - עודכן לתמונה אחת */
+/* .app-logo {
+  display: flex;
+  align-items: center;
+  height: 50px; 
+} */
+
+.full-logo-image {
+  height: 100%;
+  max-height: 50px;
+  width: auto;
+  object-fit: contain;
+  max-width: 200px; /* הגבלת רוחב מקסימלי */
+}
+
+/* Navigation links container */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 2rem; /* Increased gap between nav items */
+  direction: rtl; /* Right-to-left for navigation */
+}
+
+/* Style for all navigation links */
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.1rem; /* Increased font size */
+  font-weight: 600;
+  text-decoration: none;
+  padding: 0.5rem 0;
+  position: relative;
+  transition: all 0.2s ease;
+  color: #555;
+}
+
+.nav-item:hover {
+  transform: translateY(-2px);
+}
+
+.nav-item mat-icon {
+  font-size: 22px; /* Increased icon size */
+  width: 22px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Colorful navigation items */
+.nav-item:nth-child(1) {
+  color: #c70039;
+}
+.nav-item:nth-child(2) {
+  color: #ff5733;
+}
+.nav-item:nth-child(3) {
+  color: #ffa500;
+}
+.nav-item:nth-child(4) {
+  color: #5aa454;
+}
+
+/* Active navigation state */
+.nav-active {
+  position: relative;
+}
+
+.nav-active::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  border-radius: 1.5px;
+}
+
+.nav-item:nth-child(1).nav-active::after {
+  background-color: #c70039;
+}
+.nav-item:nth-child(2).nav-active::after {
+  background-color: #ff5733;
+}
+.nav-item:nth-child(3).nav-active::after {
+  background-color: #ffa500;
+}
+.nav-item:nth-child(4).nav-active::after {
+  background-color: #5aa454;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .app-header {
+    flex-direction: column;
+    padding: 1.5rem;
+    gap: 1.5rem;
+  }
+  
+  /* .app-logo {
+    width: 100%;
+    justify-content: center;
+  } */
+  .app-logo {
+    display: flex;
+    align-items: center;
+    height: 50px;
+    width: 200px; /* התאם לרוחב הלוגו שלך */
+    background-image: url("../../assets/images/7823700-02.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: left center;
+  }
+  
+  .full-logo-image {
+    max-width: 80%; /* הגבלת רוחב במסכים קטנים */
+  }
+  
+  .nav-links {
+    width: 100%;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+}

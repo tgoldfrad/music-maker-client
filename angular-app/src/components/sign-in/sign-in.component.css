@@ -1,0 +1,205 @@
+/* Form Dialog Styling - Compact version without scrolling */
+.mat-dialog-container {
+    padding: 0 !important;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    max-height: none !important; /* Prevent scrolling */
+  }
+  
+  .dialog-header {
+    padding: 1rem 1.5rem;
+    background: white;
+    position: relative;
+    border-bottom: 1px solid #f0f0f0;
+  }
+  
+  .dialog-header::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(to right, #5aa454, #ffa500, #ff5733, #c70039);
+  }
+  
+  .dialog-title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #333;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  
+  .title-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    background-color: #ff5733; /* Changed to red-orange for sign-in */
+    color: white;
+    border-radius: 8px;
+    font-size: 1.1rem;
+  }
+  
+  .color-dots {
+    display: flex;
+    margin-top: 0.35rem;
+  }
+  
+  .color-dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    margin-right: 4px;
+  }
+  
+  .color-dot:nth-child(1) {
+    background-color: #5aa454;
+  }
+  .color-dot:nth-child(2) {
+    background-color: #ffa500;
+  }
+  .color-dot:nth-child(3) {
+    background-color: #ff5733;
+  }
+  .color-dot:nth-child(4) {
+    background-color: #c70039;
+  }
+  
+  mat-dialog-content {
+    padding: 1.5rem !important;
+    font-family: "Nunito", "Segoe UI", sans-serif;
+    max-height: none !important; /* Prevent scrolling */
+    overflow: visible !important; /* Prevent scrolling */
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem; /* Reduced gap */
+  }
+  
+  /* Input fields styling - more compact */
+  mat-form-field {
+    width: 100%;
+    margin-bottom: -0.5rem; /* Reduce space between fields */
+  }
+  
+  ::ng-deep .mat-form-field-appearance-fill .mat-form-field-flex {
+    background-color: #f9f9f9;
+    border-radius: 8px !important;
+    padding: 0.6rem 0.75rem 0 !important; /* Reduced padding */
+  }
+  
+  ::ng-deep .mat-form-field-wrapper {
+    padding-bottom: 1rem !important; /* Reduced bottom padding */
+  }
+  
+  ::ng-deep .mat-form-field-underline {
+    display: none;
+  }
+  
+  ::ng-deep .mat-form-field-appearance-fill.mat-focused .mat-form-field-flex {
+    background-color: #f5f5f5;
+    box-shadow: 0 0 0 2px rgba(255, 87, 51, 0.2); /* Changed to match title icon */
+  }
+  
+  ::ng-deep .mat-form-field-label {
+    color: #666 !important;
+  }
+  
+  ::ng-deep .mat-focused .mat-form-field-label {
+    color: #ff5733 !important; /* Changed to match title icon */
+  }
+  
+  ::ng-deep .mat-form-field-ripple {
+    background-color: #ff5733 !important; /* Changed to match title icon */
+  }
+  
+  ::ng-deep .mat-form-field.mat-focused .mat-form-field-ripple {
+    background-color: #ff5733 !important; /* Changed to match title icon */
+  }
+  
+  ::ng-deep .mat-error {
+    color: #c70039 !important;
+    font-size: 0.8rem;
+    margin-top: 0.2rem;
+  }
+  
+  /* Dialog actions */
+  .dialog-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.75rem;
+    margin-top: 1rem;
+  }
+  
+  .cancel-button {
+    color: #666 !important;
+    background-color: transparent !important;
+    border: 1px solid #ddd !important;
+    border-radius: 50px !important;
+    padding: 0.5rem 1.25rem !important; /* Reduced padding */
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+    transition: all 0.2s ease !important;
+  }
+  
+  .cancel-button:hover {
+    background-color: #f5f5f5 !important;
+    border-color: #ccc !important;
+  }
+  
+  .submit-button {
+    background: linear-gradient(135deg, #ff5733, #c70039) !important; /* Changed to red-orange gradient */
+    color: white !important;
+    border: none !important;
+    border-radius: 50px !important;
+    padding: 0.5rem 1.25rem !important; /* Reduced padding */
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 0.5rem !important;
+    box-shadow: 0 4px 12px rgba(255, 87, 51, 0.25) !important; /* Changed to match button color */
+    transition: all 0.2s ease !important;
+    cursor: pointer !important;
+    margin-top: 0 !important;
+  }
+  
+  .submit-button:hover:not([disabled]) {
+    background: linear-gradient(135deg, #e84e2c, #b30033) !important; /* Darker gradient on hover */
+    box-shadow: 0 6px 16px rgba(255, 87, 51, 0.35) !important;
+    transform: translateY(-2px) !important;
+  }
+  
+  .submit-button[disabled] {
+    background: linear-gradient(135deg, #ffb8a8, #e6a0ad) !important; /* Lighter gradient when disabled */
+    cursor: not-allowed !important;
+    box-shadow: none !important;
+  }
+  
+  .submit-button mat-icon {
+    font-size: 1.1rem;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 480px) {
+    mat-dialog-content {
+      padding: 1rem !important;
+    }
+    
+    .submit-button, .cancel-button {
+      width: 100%;
+    }
+    
+    .dialog-actions {
+      flex-direction: column-reverse;
+    }
+  }

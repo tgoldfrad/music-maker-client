@@ -1,0 +1,133 @@
+.chart-container {
+    width: 100%;
+    height: 100%; /* Changed from 100vh to prevent scrolling issues */
+    max-height: calc(100vh - 100px); /* Adjust based on your menu height */
+    display: flex;
+    flex-direction: row; /* Changed to row to place gradient on right */
+    justify-content: center; /* Center the content */
+    align-items: center;
+    padding: 40px 40px 80px 40px; /* Increased bottom padding */
+    box-sizing: border-box;
+    position: relative;
+  }
+  
+  .chart-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+    position: absolute;
+    top: 10px;
+    left: 0;
+    right: 0;
+  }
+  
+  .chart-wrapper {
+    position: relative;
+    width: 65%; /* Reduced from 70% to 65% */
+    height: 70%; /* Reduced from 80% to 70% */
+    margin-top: 60px; /* Increased space for the title */
+    margin-bottom: 40px; /* Added bottom margin */
+    margin-right: 50px; /* Increased right margin to push gradient bar further right */
+  }
+  
+  /* New Gradient Legend Styles */
+  .gradient-legend {
+    width: 80px; /* Reduced width */
+    height: 70%; /* Match chart wrapper height */
+    margin-top: 60px; /* Space for the title */
+    margin-bottom: 40px; /* Added bottom margin to match chart */
+    display: flex;
+    justify-content: flex-start; /* Align to start */
+    align-items: center;
+    padding-right: 20px; /* Added right padding */
+    position: absolute; /* Changed from relative to absolute */
+    right: 20px; /* Position at right edge with some padding */
+  }
+  
+  .gradient-bar {
+    position: relative;
+    width: 30px;
+    height: 100%;
+    max-height: 350px; /* Reduced from 400px */
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    overflow: visible;
+  }
+  
+  .gradient-fill {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, #5aa454, #ffa500, #ff5733, #c70039);
+  }
+  
+  .marker {
+    position: absolute;
+    right: -45px; /* Reduced distance to be closer to the bar */
+    display: flex;
+    align-items: center;
+  }
+  
+  .marker-line {
+    position: absolute;
+    width: 10px;
+    height: 2px;
+    background-color: #333;
+    left: -10px; /* Position line to connect to the bar */
+  }
+  
+  .marker-label {
+    white-space: nowrap;
+    font-size: 12px;
+  }
+  
+  .high {
+    top: 0%;
+  }
+  
+  .medium-high {
+    top: 25%;
+  }
+  
+  .medium-low {
+    top: 50%;
+  }
+  
+  .low {
+    top: 75%;
+  }
+  
+  .min {
+    bottom: 0%;
+  }
+  
+  /* This helps with the two-line labels */
+  ::ng-deep .ngx-charts .x-axis .tick text {
+    text-anchor: middle !important;
+    transform: rotate(0deg) !important;
+  }
+  
+  ::ng-deep .ngx-charts .x-axis .tick text tspan {
+    font-size: 12px;
+    text-anchor: middle !important;
+  }
+  
+  /* Hide grid lines */
+  ::ng-deep .ngx-charts .grid-panel.odd rect {
+    fill: transparent !important;
+  }
+  
+  ::ng-deep .ngx-charts .grid-panel.even rect {
+    fill: transparent !important;
+  }
+  
+  ::ng-deep .ngx-charts .x-axis .tick text tspan {
+    font-size: 12px;
+  }
+  
+  /* Adjust the chart container to have more bottom space */
+  ::ng-deep .ngx-charts {
+    padding-bottom: 20px;
+  }
+  

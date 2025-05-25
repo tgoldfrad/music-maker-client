@@ -1,0 +1,214 @@
+/* Minimalist Error Dialog Styles - Full Size - No Scroll */
+.error-dialog-container {
+    width: 420px;
+    max-width: 90vw;
+    max-height: 80vh; /* הגבלת גובה מקסימלי */
+    border-radius: 10px;
+    overflow: hidden;
+    font-family: "Nunito", "Segoe UI", sans-serif;
+    background-color: #ffffff;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+    animation: dialogAppear 0.2s ease-out;
+    position: relative;
+    display: flex;
+    flex-direction: column; /* ארגון אנכי של האלמנטים */
+  }
+  
+  /* Header with side icon layout */
+  .dialog-header {
+    position: relative;
+    padding: 18px 24px; /* הקטנת הריפוד מעט */
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #f0f0f0;
+    flex-shrink: 0; /* מניעת כיווץ של הכותרת */
+  }
+  
+  .header-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px; /* הקטנה קלה */
+    height: 42px;
+    min-width: 42px;
+    border-radius: 50%;
+    margin-right: 16px;
+  }
+  
+  .header-icon mat-icon {
+    font-size: 24px;
+    height: 24px;
+    width: 24px;
+  }
+  
+  .dialog-title {
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0;
+    color: #333333;
+    line-height: 1.3;
+    flex: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; /* קיצור טקסט ארוך */
+  }
+  
+  /* Content Section */
+  .dialog-content {
+    padding: 20px 24px; /* הקטנת הריפוד מעט */
+    text-align: left;
+    flex: 1; /* תופס את המקום הנותר */
+    overflow-y: auto; /* אם יש צורך בגלילה, רק בתוכן */
+    min-height: 60px; /* גובה מינימלי לתוכן */
+    max-height: calc(80vh - 180px); /* הגבלת גובה מקסימלי לתוכן */
+  }
+  
+  .error-message {
+    font-size: 16px;
+    line-height: 1.5;
+    margin: 0;
+    color: #555555;
+    font-weight: 400;
+    word-wrap: break-word; /* שבירת מילים ארוכות */
+  }
+  
+  /* Actions Section */
+  .dialog-actions {
+    display: flex;
+    justify-content: flex-end;
+    padding: 8px 24px 20px; /* הקטנת הריפוד התחתון */
+    flex-shrink: 0; /* מניעת כיווץ של אזור הכפתורים */
+  }
+  
+  .close-button {
+    min-width: 100px;
+    height: 40px;
+    border-radius: 6px;
+    font-size: 15px;
+    font-weight: 500;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    color: white;
+  }
+  
+  .close-button:hover {
+    filter: brightness(1.1);
+  }
+  
+  .close-button:active {
+    filter: brightness(0.95);
+    transform: translateY(1px);
+  }
+  
+  .close-button mat-icon {
+    font-size: 18px;
+    height: 18px;
+    width: 18px;
+  }
+  
+  /* Type-specific styles */
+  /* Error type */
+  .error-dialog-container.error {
+    border-left: 4px solid #c70039;
+  }
+  
+  .error-dialog-container.error .header-icon {
+    background-color: rgba(199, 0, 57, 0.1);
+    color: #c70039;
+  }
+  
+  .error-dialog-container.error .close-button {
+    background-color: #c70039;
+  }
+  
+  /* Warning type */
+  .error-dialog-container.warning {
+    border-left: 4px solid #ffa500;
+  }
+  
+  .error-dialog-container.warning .header-icon {
+    background-color: rgba(255, 165, 0, 0.1);
+    color: #ffa500;
+  }
+  
+  .error-dialog-container.warning .close-button {
+    background-color: #ffa500;
+  }
+  
+  /* Info type */
+  .error-dialog-container.info {
+    border-left: 4px solid #5aa454;
+  }
+  
+  .error-dialog-container.info .header-icon {
+    background-color: rgba(90, 164, 84, 0.1);
+    color: #5aa454;
+  }
+  
+  .error-dialog-container.info .close-button {
+    background-color: #5aa454;
+  }
+  
+  /* Animations */
+  @keyframes dialogAppear {
+    from {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  
+  /* Global dialog styles */
+  .error-dialog-backdrop {
+    background-color: rgba(0, 0, 0, 0.3);
+  }
+  
+  .error-dialog-panel .mat-mdc-dialog-surface {
+    border-radius: 10px;
+    overflow: hidden;
+    max-height: 80vh !important; /* חשוב להגביל את גובה הדיאלוג */
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 600px) {
+    .error-dialog-container {
+      width: 100%;
+      max-width: none;
+      border-radius: 10px 10px 0 0;
+      margin-bottom: 0;
+      max-height: 70vh; /* הגבלת גובה במובייל */
+    }
+    
+    .dialog-header {
+      padding: 16px 20px;
+    }
+    
+    .dialog-content {
+      padding: 16px 20px;
+      max-height: calc(70vh - 160px); /* הגבלת גובה תוכן במובייל */
+    }
+    
+    .dialog-actions {
+      padding: 8px 20px 16px;
+    }
+    
+    .header-icon {
+      width: 38px;
+      height: 38px;
+      min-width: 38px;
+    }
+    
+    .header-icon mat-icon {
+      font-size: 22px;
+      height: 22px;
+      width: 22px;
+    }
+  }

@@ -1,0 +1,87 @@
+<!-- <header class="app-header"> -->
+    <!-- App Logo (Left Side) -->
+    <!-- <div class="app-logo">
+      <div class="logo-icon">
+        <mat-icon>music_note</mat-icon>
+      </div>
+      <div class="logo-text">
+        <h1 class="app-name">NotePlayer</h1>
+        <p class="app-tagline">Convert notes to audio easily</p>
+        <div class="color-dots">
+          <span class="color-dot"></span>
+          <span class="color-dot"></span>
+          <span class="color-dot"></span>
+          <span class="color-dot"></span>
+        </div>
+      </div>
+    </div>
+     -->
+    <!-- Navigation Links (Right Side) -->
+    <!-- <div class="nav-links">
+      @if(!isLoggedIn){
+        <a (click)="openSignInDialog()" class="nav-item">
+          <mat-icon>login</mat-icon>
+          <span>Sign In</span>
+        </a>
+      }
+      @else {
+        <a (click)="logOut()" class="nav-item">
+          <mat-icon>logout</mat-icon>
+          <span>Sign Out</span>
+        </a>
+      }
+      
+      <a [routerLink]="['/stats']" routerLinkActive="nav-active" class="nav-item">
+        <mat-icon>bar_chart</mat-icon>
+        <span>Statistics</span>
+      </a>
+      
+      <a [routerLink]="['/user']" routerLinkActive="nav-active" class="nav-item">
+        <mat-icon>people</mat-icon>
+        <span>Users</span>
+      </a>
+      
+      <a [routerLink]="['/']" routerLinkActive="nav-active" class="nav-item">
+        <mat-icon>home</mat-icon>
+        <span>Home</span>
+      </a>
+    </div>
+  </header> -->
+
+  <header class="app-header">
+    <!-- App Logo (Left Side) - הוחלף בתמונה אחת -->
+    <!-- <div class="app-logo">
+      <img src="../../assets/images/7823700-02.png" alt="NotePlayer Logo" class="full-logo-image">
+    </div> -->
+    <div class="app-logo"></div>
+    <!-- Navigation Links (Right Side) -->
+    <div class="nav-links">
+      @if(!isLoggedIn){
+        <a (click)="openSignInDialog()" class="nav-item">
+          <mat-icon>login</mat-icon>
+          <span>Sign In</span>
+        </a>
+      }
+      @else {
+        <a (click)="logOut()" class="nav-item">
+          <mat-icon>logout</mat-icon>
+          <span>Sign Out</span>
+        </a>
+      }
+      
+      <a [routerLink]="['/stats']" routerLinkActive="nav-active" class="nav-item">
+        <mat-icon>bar_chart</mat-icon>
+        <span>Statistics</span>
+      </a>
+      
+      <a [routerLink]="['/user']" routerLinkActive="nav-active" class="nav-item">
+        <mat-icon>people</mat-icon>
+        <span>Users</span>
+      </a>
+      
+      <a [routerLink]="['/']" routerLinkActive="nav-active" class="nav-item">
+        <mat-icon>home</mat-icon>
+        <span>Home</span>
+      </a>
+    </div>
+</header>

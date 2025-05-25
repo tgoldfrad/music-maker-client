@@ -1,0 +1,94 @@
+<div class="page-header">
+    <div class="header-container">
+      <div class="title-container">
+        <h1>
+          <span class="title-icon">
+            <mat-icon>people</mat-icon>
+          </span>
+          Manage Users
+        </h1>
+        <div class="color-accent">
+          <span class="color-dot"></span>
+          <span class="color-dot"></span>
+          <span class="color-dot"></span>
+          <span class="color-dot"></span>
+        </div>
+      </div>
+      
+      <div class="search-container">
+        <mat-icon class="search-icon">search</mat-icon>
+        <input type="text" placeholder="Search by email..." [(ngModel)]="searchText" (input)="filterUsers()" />
+      </div>
+      
+      <button class="add-button" (click)="openUserDialog()">
+        <mat-icon>person_add</mat-icon>
+        Add User
+      </button>
+    </div>
+  </div>
+  
+  <div class="user-grid">
+    @for(user of filteredUsers;track user.id){
+      <div class="user-card">
+        <div class="card-header">
+          <div class="avatar">
+            <mat-icon>person</mat-icon>
+          </div>
+          <h3 class="user-name">{{user.name}}</h3>
+        </div>
+        
+        <div class="card-content">
+          <ul class="info-list">
+            <li class="info-item">
+              <div class="info-icon">
+                <mat-icon>email</mat-icon>
+              </div>
+              <span class="info-text">{{user.email}}</span>
+            </li>
+            
+            <li class="info-item">
+              <div class="info-icon">
+                <mat-icon>event</mat-icon>
+              </div>
+              <span class="info-text">{{user.createdAt | date:'MMM d, y'}}</span>
+            </li>
+          </ul>
+        </div>
+        
+        <div class="card-actions">
+          <button class="delete-button" (click)="deleteUser(user.id)">
+            <mat-icon>delete_outline</mat-icon>
+            Remove
+          </button>
+        </div>
+      </div>
+    }
+    @empty{
+      @if(!users$) {
+        <div class="loading">
+          <div class="loading-spinner"></div>
+          <p class="loading-text">Loading users...</p>
+        </div>
+      }
+      @else{
+        <div class="empty-state">
+          <div class="empty-icon">
+            <mat-icon>search_off</mat-icon>
+          </div>
+          <h3 class="empty-title">No users found</h3>
+          <p class="empty-message">We couldn't find any users matching your search criteria. Try adjusting your search or add a new user.</p>
+        </div>
+      }
+    }
+  </div>
+  
+<!-- @empty {
+    @if(!users$)
+    {
+        <div> we are working for you! </div>
+    }
+    @else {
+        <div>no users found</div>
+    } -->
+
+

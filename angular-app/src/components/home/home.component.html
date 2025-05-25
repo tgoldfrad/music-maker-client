@@ -1,0 +1,155 @@
+<div class="page-container">
+  <div class="page-header">
+    <div class="header-container">
+      <div class="title-container">
+        <h1>
+          <span class="title-icon">
+            <i class="material-icons">dashboard</i>
+          </span>
+          Admin Dashboard
+        </h1>
+        <div class="color-accent">
+          <div class="color-dot"></div>
+          <div class="color-dot"></div>
+          <div class="color-dot"></div>
+          <div class="color-dot"></div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="intro-section">
+      <div class="intro-card">
+        <div class="intro-icon">
+          <i class="material-icons">music_note</i>
+        </div>
+        <h2>Welcome to Music Notation Manager</h2>
+        <p>This admin portal allows you to manage users and monitor system activity for the Music Notation Converter application. The system helps users convert music notation files to audio files, and as an administrator, you can manage users, view statistics, and add new users to the platform.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="options-grid">
+    <!-- User Management Option -->
+    <div class="option-card" [routerLink]="['/user']" routerLinkActive="nav-active">
+      <div class="card-header">
+        <div class="avatar">
+          <i class="material-icons">people</i>
+        </div>
+        <h3 class="option-title">User Management</h3>
+      </div>
+      <div class="card-content">
+        <p class="option-description">
+          View and manage all registered users. You can edit user details, change permissions, or remove users from the system.
+        </p>
+        <ul class="info-list">
+          <li class="info-item">
+            <div class="info-icon">
+              <i class="material-icons">person_search</i>
+            </div>
+            <span class="info-text">Search and filter users</span>
+          </li>
+          <li class="info-item">
+            <div class="info-icon">
+              <i class="material-icons">edit</i>
+            </div>
+            <span class="info-text">Edit user information</span>
+          </li>
+          <li class="info-item">
+            <div class="info-icon">
+              <i class="material-icons">delete</i>
+            </div>
+            <span class="info-text">Remove inactive accounts</span>
+          </li>
+        </ul>
+      </div>
+      <div class="card-actions">
+        <button class="action-button">
+          <i class="material-icons">arrow_forward</i>
+          Manage Users
+        </button>
+      </div>
+    </div>
+
+    <!-- Statistics Option -->
+    <div class="option-card" [routerLink]="['/stats']" routerLinkActive="nav-active">
+      <div class="card-header">
+        <div class="avatar">
+          <i class="material-icons">bar_chart</i>
+        </div>
+        <h3 class="option-title">Statistics</h3>
+      </div>
+      <div class="card-content">
+        <p class="option-description">
+          View detailed statistics about user registrations, file conversions, and system usage over the past months.
+        </p>
+        <ul class="info-list">
+          <li class="info-item">
+            <div class="info-icon">
+              <i class="material-icons">trending_up</i>
+            </div>
+            <span class="info-text">Monthly registration trends</span>
+          </li>
+          <li class="info-item">
+            <div class="info-icon">
+              <i class="material-icons">insert_chart</i>
+            </div>
+            <span class="info-text">Conversion statistics</span>
+          </li>
+          <li class="info-item">
+            <div class="info-icon">
+              <i class="material-icons">data_usage</i>
+            </div>
+            <span class="info-text">System performance metrics</span>
+          </li>
+        </ul>
+      </div>
+      <div class="card-actions">
+        <button class="action-button">
+          <i class="material-icons">arrow_forward</i>
+          View Statistics
+        </button>
+      </div>
+    </div>
+
+    <!-- Add User Option -->
+    <div class="option-card" (click)="addUser()">
+      <div class="card-header">
+        <div class="avatar">
+          <i class="material-icons">person_add</i>
+        </div>
+        <h3 class="option-title">Add New User</h3>
+      </div>
+      <div class="card-content">
+        <p class="option-description">
+          Create new user accounts manually. Add administrators or regular users with custom permissions.
+        </p>
+        <ul class="info-list">
+          <li class="info-item">
+            <div class="info-icon">
+              <i class="material-icons">assignment_ind</i>
+            </div>
+            <span class="info-text">Create user profiles</span>
+          </li>
+          <li class="info-item">
+            <div class="info-icon">
+              <i class="material-icons">vpn_key</i>
+            </div>
+            <span class="info-text">Set access permissions</span>
+          </li>
+          <li class="info-item">
+            <div class="info-icon">
+              <i class="material-icons">email</i>
+            </div>
+            <span class="info-text">Send welcome emails</span>
+          </li>
+        </ul>
+      </div>
+      <div class="card-actions">
+        <button class="action-button">
+          <i class="material-icons">arrow_forward</i>
+          Add User
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
