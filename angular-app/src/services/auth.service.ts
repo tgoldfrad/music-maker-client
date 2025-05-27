@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 })
 export class AuthService {
 
-  private url = 'http://localhost:5035/api/auth/login'
+  private url = 'https://music-maker-server.onrender.com/api/auth/login'
   constructor(private http: HttpClient) { }
   
   signIn(email: string, password: string) {

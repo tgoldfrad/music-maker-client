@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const apiClient = axios.create({
-    baseURL: 'http://localhost:5035/api/',
+    baseURL: 'https://music-maker-server.onrender.com/api/',
 });
 
 apiClient.interceptors.request.use(

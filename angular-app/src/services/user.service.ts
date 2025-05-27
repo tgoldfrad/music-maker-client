@@ -11,8 +11,8 @@ export class UserService {
 
   private userSubject:BehaviorSubject<User[]> = new BehaviorSubject<User[]>([]);
   user$ = this.userSubject.asObservable();
-  private url = 'http://localhost:5035/api/user';
-  private urlAuth = 'http://localhost:5035/api/auth/register';
+  private url = 'https://music-maker-server.onrender.com/api/user';
+  private urlAuth = 'https://music-maker-server.onrender.com/api/auth/register';
 
   
   constructor(private http: HttpClient ,private dialogService:DialogService) {
