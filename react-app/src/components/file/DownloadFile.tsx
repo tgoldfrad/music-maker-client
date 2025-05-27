@@ -1,68 +1,133 @@
-import { IconButton } from "@mui/material";
-import axios from "axios";
-import { useState } from "react";
-//import DownloadIcon from '@mui/icons-material/Download';
-import { useSelector } from "react-redux";
-import { RootState } from "../../store/store";
-import apiClient from "../../apiClient";
-import SaveAltRoundedIcon from '@mui/icons-material/SaveAltRounded';
+// import { IconButton } from "@mui/material";
+// import axios from "axios";
+// import { useState } from "react";
+// //import DownloadIcon from '@mui/icons-material/Download';
+// import { useSelector } from "react-redux";
+// import { RootState } from "../../store/store";
+// import apiClient from "../../apiClient";
+// import SaveAltRoundedIcon from '@mui/icons-material/SaveAltRounded';
 
 
-const DownloadFile = ({fileName}:{fileName:string}) => {
+// const DownloadFile = ({fileName}:{fileName:string}) => {
 
-    const [progress, setProgress] = useState(0);
-    const currentUser = useSelector((state:RootState)=>state.user.currentUser);
+//     const [progress, setProgress] = useState(0);
+//     const currentUser = useSelector((state:RootState)=>state.user.currentUser);
     
-    const hanleDownload = async () => {
+//     const hanleDownload = async () => {
         
-        try {
+//         try {
       
-        //   שלב 1: קבלת Presigned URL מהשרת
-          const response = await apiClient.get('file/download-url', {
-            params: {
-              userId: currentUser.id,
-              fileName},
-            // params: { fileName: fileName},
-          });
+//         //   שלב 1: קבלת Presigned URL מהשרת
+//           const response = await apiClient.get('file/download-url', {
+//             params: {
+//               userId: currentUser.id,
+//               fileName},
+//             // params: { fileName: fileName},
+//           });
     
-          const presignedUrl = response.data.url;
+//           const presignedUrl = response.data.url;
        
 
-         //הורדת הקובץ מ s3
-        const downloadResponse = await axios.get(presignedUrl,{
-            responseType: 'blob',
-            onUploadProgress: (progressEvent) => {
-                const percent = Math.round(
-                  (progressEvent.loaded * 100) / (progressEvent.total || 1)
-                );
-                setProgress(percent);
-              },
-        });
+//          //הורדת הקובץ מ s3
+//         const downloadResponse = await axios.get(presignedUrl,{
+//             responseType: 'blob',
+//             onUploadProgress: (progressEvent) => {
+//                 const percent = Math.round(
+//                   (progressEvent.loaded * 100) / (progressEvent.total || 1)
+//                 );
+//                 setProgress(percent);
+//               },
+//         });
     
-          // יצירת URL זמני מה-blob
-          const url = window.URL.createObjectURL(new Blob([downloadResponse.data]));
-          const link = document.createElement('a');
-          link.href = url;
-          link.setAttribute('download', fileName);
-          document.body.appendChild(link);
-          link.click();
-          document.body.removeChild(link);
-          window.URL.revokeObjectURL(url);
+//           // יצירת URL זמני מה-blob
+//           const url = window.URL.createObjectURL(new Blob([downloadResponse.data]));
+//           const link = document.createElement('a');
+//           link.href = url;
+//           link.setAttribute('download', fileName);
+//           document.body.appendChild(link);
+//           link.click();
+//           document.body.removeChild(link);
+//           window.URL.revokeObjectURL(url);
 
-        } catch (error) {
-          console.error('Error downloading file:', error);
-        }
-        }
+//         } catch (error) {
+//           console.error('Error downloading file:', error);
+//         }
+//         }
 
-    return(<>
-    <div style={{margin: 0}}>
-          <IconButton size="small" onClick={hanleDownload}>
-            {/* <DownloadIcon /> */}
-            <SaveAltRoundedIcon/>
-          </IconButton>
+//     return(<>
+//     <div style={{margin: 0}}>
+//           <IconButton size="small" onClick={hanleDownload}>
+//             {/* <DownloadIcon /> */}
+//             <SaveAltRoundedIcon/>
+//           </IconButton>
 
-        {progress > 0 && <div>progress: {progress}%</div>}
-    </div>
-    </>)
-};
+//         {progress > 0 && <div>progress: {progress}%</div>}
+//     </div>
+//     </>)
+// };
+// export default DownloadFile
+"use client"
+
+import { IconButton, Box } from "@mui/material"
+import axios from "axios"
+import { useState } from "react"
+import { useSelector } from "react-redux"
+import type { RootState } from "../../store/store"
+import apiClient from "../../apiClient"
+import { Download } from "@mui/icons-material" // אייקון יותר יפה
+import { actionButtonStyles, fileCardStyles } from "../../styles/FileCardStyle"
+
+const DownloadFile = ({ fileName }: { fileName: string }) => {
+  const [progress, setProgress] = useState(0)
+  const currentUser = useSelector((state: RootState) => state.user.currentUser)
+
+  const hanleDownload = async () => {
+    try {
+      // שלב 1: קבלת Presigned URL מהשרת
+      const response = await apiClient.get("file/download-url", {
+        params: {
+          userId: currentUser.id,
+          fileName,
+        },
+      })
+
+      const presignedUrl = response.data.url
+
+      //הורדת הקובץ מ s3
+      const downloadResponse = await axios.get(presignedUrl, {
+        responseType: "blob",
+        onUploadProgress: (progressEvent) => {
+          const percent = Math.round((progressEvent.loaded * 100) / (progressEvent.total || 1))
+          setProgress(percent)
+        },
+      })
+
+      // יצירת URL זמני מה-blob
+      const url = window.URL.createObjectURL(new Blob([downloadResponse.data]))
+      const link = document.createElement("a")
+      link.href = url
+      link.setAttribute("download", fileName)
+      document.body.appendChild(link)
+      link.click()
+      document.body.removeChild(link)
+      window.URL.revokeObjectURL(url)
+
+      // איפוס ה-progress אחרי ההורדה
+      setTimeout(() => setProgress(0), 2000)
+    } catch (error) {
+      console.error("Error downloading file:", error)
+      setProgress(0)
+    }
+  }
+
+  return (
+    <Box sx={actionButtonStyles.actionContainer}>
+      <IconButton sx={actionButtonStyles.downloadButton} onClick={hanleDownload}>
+        <Download />
+      </IconButton>
+      {progress > 0 && <Box sx={fileCardStyles.progressContainer}>Downloading: {progress}%</Box>}
+    </Box>
+  )
+}
+
 export default DownloadFile

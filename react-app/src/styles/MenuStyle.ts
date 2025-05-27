@@ -3,117 +3,139 @@ import type React from "react"
 
 export const menuStyles = {
   appBar: {
-    backgroundColor: "#2f2f2f",
-    boxShadow: "0 2px 10px rgba(0,0,0,0.2)",
-    borderBottom: "2px solid #5aa454",
+    backgroundColor: "rgb(9, 17, 40)",
+    boxShadow: "0 2px 10px rgba(0,0,0,0.3)",
+    position: "relative",
+    "&::after": {
+      content: '""',
+      position: "absolute",
+      bottom: 0,
+      left: 0,
+      right: 0,
+      height: "3px",
+      background: "linear-gradient(90deg, #ffa500 0%, #ff5733 25%, #c70039 50%, #5aa454 75%, #ffa500 100%)",
+      backgroundSize: "400% 100%",
+      animation: "colorShift 4s ease-in-out infinite",
+    },
   } as SxProps<Theme>,
 
   container: {
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
-    padding: { xs: "8px 16px", md: "12px 24px" },
-    minHeight: "64px",
-    width: "100%",
+    padding: { xs: "8px 16px", md: "10px 32px" },
+    minHeight: { xs: "56px", md: "60px" },
+    width: "width: calc(100% - 0px);",
     maxWidth: "none",
   } as SxProps<Theme>,
 
   logoSection: {
     display: "flex",
     alignItems: "center",
-    gap: { xs: 1, md: 1.5 },
     flex: "0 0 auto",
+    height: "80px",
+    width: "180px",
+    backgroundImage: "url(../src/assets/לוגו.png)",
+    backgroundPosition: "center",
+    backgroundSize: "cover",
   } as SxProps<Theme>,
 
-  logoImage: {
-      height: { xs: "35px", md: "40px" },
-      width: "auto",
-      borderRadius: "4px",
-      objectFit: "contain",
-  } as unknown as React.CSSProperties,
+  // logoImage: {
+  //   height: { xs: "28px", md: "32px" },
+  //   width: { xs: "28px", md: "32px" },
+  //   maxHeight: { xs: "28px", md: "32px" },
+  //   maxWidth: { xs: "28px", md: "32px" },
+  //   borderRadius: "6px",
+  //   objectFit: "contain",
+  // }as React.CSSProperties,
 
-  logoText: {
-    fontWeight: "600",
-    fontSize: { xs: "1rem", md: "1.2rem" },
-    color: "#ffffff",
-    letterSpacing: "0.5px",
-    display: { xs: "none", sm: "block" },
-  } as SxProps<Theme>,
-
-  rightSection: {
-    display: { xs: "none", md: "flex" },
+  centerSection: {
+    display: { xs: "none", lg: "flex" },
     alignItems: "center",
-    gap: 0.5,
+    gap: { md: 2, lg: 3, xl: 4 },
     flex: "1 1 auto",
-    justifyContent: "flex-end",
-    overflow: "visible",
+    justifyContent: "center",
   } as SxProps<Theme>,
 
   navItem: {
     display: "flex",
     alignItems: "center",
-    gap: 0.5,
+    gap: 0.8,
     textDecoration: "none",
-    color: "#ffffff",
-    fontSize: "0.85rem",
-    fontWeight: "500",
+    fontSize: { md: "0.85rem", lg: "0.9rem" },
+    fontWeight: "600",
     padding: "8px 12px",
-    borderRadius: "4px",
-    transition: "all 0.2s ease",
-    minWidth: "auto",
+    borderRadius: "8px",
+    transition: "all 0.3s ease",
     whiteSpace: "nowrap",
+    backgroundColor: "transparent",
     "&:hover": {
-      color: "#ffffff",
-      backgroundColor: "#5aa454",
+      transform: "translateY(-2px)",
+      backgroundColor: "rgba(255, 255, 255, 0.05)",
     },
   } as SxProps<Theme>,
 
-  authItem: {
+  rightSection: {
+    display: { xs: "none", md: "flex" },
+    flexDirection: "column",
+    gap: 0.8,
+    flex: "0 0 auto",
+    alignItems: "flex-end",
+    marginRight: { md: "24px", lg: "5px" }, // הוספת מרווח פנימה
+    // paddingRight: { md: "8px", lg: "0px" }, // מרווח נוסף
+  } as SxProps<Theme>,
+
+  authButton: {
     display: "flex",
     alignItems: "center",
-    gap: 0.5,
+    gap: 1,
     color: "#ffffff",
-    fontSize: "0.85rem",
-    fontWeight: "500",
-    padding: "8px 12px",
-    borderRadius: "4px",
-    transition: "all 0.2s ease",
-    cursor: "pointer",
+    fontSize: { md: "0.75rem", lg: "0.8rem" },
+    fontWeight: "700",
+    padding: { md: "6px 16px", lg: "8px 20px" },
+    borderRadius: "20px",
+    background: "linear-gradient(135deg, #ffa500 0%, #ff5733 50%, #c70039 100%)",
     border: "none",
-    backgroundColor: "transparent",
-    minWidth: "auto",
-    whiteSpace: "nowrap",
+    cursor: "pointer",
+    transition: "all 0.3s ease",
+    minWidth: { md: "100px", lg: "110px" },
+    justifyContent: "space-between",
     "&:hover": {
-      color: "#ffffff",
-      backgroundColor: "#5aa454",
+      transform: "translateY(-1px)",
+      boxShadow: "0 4px 15px rgba(255, 87, 51, 0.4)",
     },
   } as SxProps<Theme>,
 
-  separator: {
-    color: "#ffa500",
-    margin: "0 4px",
-    fontSize: "0.8rem",
+  playIcon: {
+    width: 0,
+    height: 0,
+    borderLeft: "8px solid #ffffff",
+    borderTop: "5px solid transparent",
+    borderBottom: "5px solid transparent",
+    borderRadius: "2px", // פינות מעוגלות קלות
+    marginLeft: "2px",
   } as SxProps<Theme>,
 
   // Mobile styles
   mobileToggle: {
-    display: { xs: "block", md: "none" },
+    display: { xs: "block", lg: "none" },
     color: "#ffffff",
     padding: "6px",
+    backgroundColor: "#ffa500",
+    borderRadius: "6px",
     "&:hover": {
-      backgroundColor: "#5aa454",
+      backgroundColor: "#ff5733",
     },
   } as SxProps<Theme>,
 
   mobileMenu: {
-    display: { xs: "block", md: "none" },
+    display: { xs: "block", lg: "none" },
     position: "absolute",
     top: "100%",
     left: 0,
     right: 0,
-    backgroundColor: "#2f2f2f",
-    borderTop: "1px solid #5aa454",
-    boxShadow: "0 4px 10px rgba(0,0,0,0.2)",
+    backgroundColor: "rgb(9, 17, 40)",
+    boxShadow: "0 4px 20px rgba(0,0,0,0.3)",
     zIndex: 1000,
   } as SxProps<Theme>,
 
@@ -121,45 +143,54 @@ export const menuStyles = {
     padding: "16px",
     display: "flex",
     flexDirection: "column",
-    gap: 1,
+    gap: 1.5,
   } as SxProps<Theme>,
 
   mobileNavItem: {
     display: "flex",
     alignItems: "center",
-    gap: 1,
+    gap: 1.5,
     textDecoration: "none",
-    color: "#ffffff",
     fontSize: "0.9rem",
-    fontWeight: "500",
+    fontWeight: "600",
     padding: "12px 16px",
-    borderRadius: "4px",
-    transition: "all 0.2s ease",
+    borderRadius: "8px",
+    transition: "all 0.3s ease",
+    backgroundColor: "transparent",
     "&:hover": {
-      color: "#ffffff",
-      backgroundColor: "#5aa454",
+      transform: "translateY(-1px)",
+      backgroundColor: "rgba(255, 255, 255, 0.05)",
     },
   } as SxProps<Theme>,
 
-  mobileAuthItem: {
+  mobileAuthButton: {
     display: "flex",
     alignItems: "center",
-    gap: 1,
+    gap: 1.5,
     color: "#ffffff",
     fontSize: "0.9rem",
-    fontWeight: "500",
-    padding: "12px 16px",
-    borderRadius: "4px",
-    transition: "all 0.2s ease",
-    cursor: "pointer",
+    fontWeight: "700",
+    padding: "12px 20px",
+    borderRadius: "20px",
+    background: "linear-gradient(135deg, #ffa500 0%, #ff5733 50%, #c70039 100%)",
     border: "none",
-    backgroundColor: "transparent",
-    textAlign: "left",
+    cursor: "pointer",
+    transition: "all 0.3s ease",
     width: "100%",
+    justifyContent: "space-between",
     "&:hover": {
-      color: "#ffffff",
-      backgroundColor: "#5aa454",
+      transform: "translateY(-1px)",
     },
+  } as SxProps<Theme>,
+
+  mobilePlayIcon: {
+    width: 0,
+    height: 0,
+    borderLeft: "10px solid #ffffff",
+    borderTop: "6px solid transparent",
+    borderBottom: "6px solid transparent",
+    borderRadius: "2px",
+    marginLeft: "2px",
   } as SxProps<Theme>,
 
   backgroundStyle: (hasUser: boolean) => ({
@@ -171,11 +202,6 @@ export const menuStyles = {
       ? "none"
       : "linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)), url(https://img.freepik.com/free-vector/music-notes-background_23-2151339663.jpg?uid=R194409080&ga=GA1.1.1604458740.1743596294&semt=ais_hybrid)",
   }),
-
-  icon: {
-    fontSize: "1rem",
-    color: "#ffa500",
-  } as SxProps<Theme>,
 }
 
 export const modalStyle = {
@@ -185,9 +211,17 @@ export const modalStyle = {
   transform: "translate(-50%, -50%)",
   width: { xs: "90%", sm: 400 },
   bgcolor: "#ffffff",
-  borderRadius: "8px",
+  borderRadius: "12px",
   boxShadow: "0 8px 32px rgba(0,0,0,0.3)",
   p: 4,
   border: "none",
   outline: "none",
 } as SxProps<Theme>
+
+// Navigation item colors
+export const navColors = {
+  upload: "#ffa500",
+  files: "#ff5733",
+  share: "#c70039",
+  about: "#5aa454",
+}

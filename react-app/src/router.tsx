@@ -4,6 +4,7 @@ import SignIn from "./components/user/SignIn";
 import UploadFile from "./components/file/UploadFile";
 import UserFiles from "./components/file/UserFiles";
 import AllFiles from "./components/file/AllFiles";
+import About from "./components/About";
 
 export const router = createHashRouter([
     {
@@ -16,6 +17,8 @@ export const router = createHashRouter([
         { path: 'upload', element: <UploadFile />, errorElement: <>Error!</> },
         { path: 'files', element: <UserFiles />, errorElement: <>Error!</> },
         { path: 'allfiles', element: <AllFiles />, errorElement: <>Error!</> },
+        { path: '/', element: <About />, errorElement: <>Error!</> },
+
 
 
 

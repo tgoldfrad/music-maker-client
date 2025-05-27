@@ -10,8 +10,8 @@
 // import { RootState } from "../../store/store";
 
 
-//https://img.freepik.com/free-photo/flat-lay-audio-cassette-with-musical-notes_23-2148282065.jpg?uid=R194409080&ga=GA1.1.1604458740.1743596294&semt=ais_hybrid
-//https://img.freepik.com/free-vector/music-notes-background_23-2151339663.jpg?uid=R194409080&ga=GA1.1.1604458740.1743596294&semt=ais_hybrid
+// //https://img.freepik.com/free-photo/flat-lay-audio-cassette-with-musical-notes_23-2148282065.jpg?uid=R194409080&ga=GA1.1.1604458740.1743596294&semt=ais_hybrid
+// //https://img.freepik.com/free-vector/music-notes-background_23-2151339663.jpg?uid=R194409080&ga=GA1.1.1604458740.1743596294&semt=ais_hybrid
 // const Auth = () => {
 //     const [open, setOpen] = useState(false);
 //     const [isSignIn, setIsSignIn] = useState(false);
@@ -77,76 +77,10 @@
 
 
 // export default Auth;
-// "use client"
-
-// import { useState } from "react"
-// import { Modal, Box, Button } from "@mui/material"
-// import { modalStyle } from "../../styles/ModalStyle"
-// import { useSelector } from "react-redux"
-// import type { RootState } from "../../store/store"
-// import Update from "./Update"
-// import SignIn from "./SignIn"
-// import SignUp from "./SignUp"
-// import { menuStyles } from "../../styles/MenuStyle"
-
-// const Auth = () => {
-//   const [open, setOpen] = useState(false)
-//   const [isSignIn, setIsSignIn] = useState(false)
-//   const currentUser = useSelector((state: RootState) => state.user.currentUser)
-
-//   const handleSuccess = () => {
-//     setOpen(false)
-//   }
-
-//   return (
-//     <>
-//       {Object.keys(currentUser).length === 0 ? (
-//         <Box sx={{ display: "flex", gap: 1 }}>
-//           <Button
-//             onClick={() => {
-//               setOpen(true)
-//               setIsSignIn(true)
-//             }}
-//             sx={menuStyles.authButton}
-//             size="small"
-//           >
-//             Sign In
-//           </Button>
-//           <Button
-//             onClick={() => {
-//               setOpen(true)
-//               setIsSignIn(false)
-//             }}
-//             sx={menuStyles.authButton}
-//             size="small"
-//           >
-//             Sign Up
-//           </Button>
-//         </Box>
-//       ) : (
-//         <Update />
-//       )}
-
-//       <Modal
-//         open={open}
-//         onClose={() => setOpen(false)}
-//         aria-labelledby="auth-modal-title"
-//         aria-describedby="auth-modal-description"
-//       >
-//         <Box sx={{ modalStyle }}>
-//           {isSignIn ? <SignIn onSuccess={handleSuccess} /> : <SignUp onSuccess={handleSuccess} />}
-//         </Box>
-//       </Modal>
-//     </>
-//   )
-// }
-
-// export default Auth
 "use client"
 
 import { useState } from "react"
-import { Modal, Box, Typography } from "@mui/material"
-import { LogIn, UserPlus } from "lucide-react"
+import { Modal, Box } from "@mui/material"
 import { menuStyles, modalStyle } from "../../styles/MenuStyle"
 import { useSelector } from "react-redux"
 import type { RootState } from "../../store/store"
@@ -161,7 +95,7 @@ const Auth = () => {
   const currentUser = useSelector((state: RootState) => state.user.currentUser)
 
   const theme = useTheme()
-  const isMobile = useMediaQuery(theme.breakpoints.down("md"))
+  const isMobile = useMediaQuery(theme.breakpoints.down("lg"))
 
   const handleSuccess = () => {
     setOpen(false)
@@ -184,14 +118,13 @@ const Auth = () => {
           {/* Desktop Auth */}
           {!isMobile && (
             <>
-              <Box sx={menuStyles.authItem} onClick={handleSignInClick}>
-                <LogIn size={16} style={{ color: "#ffa500" }} />
-                <span>Sign In</span>
+              <Box sx={menuStyles.authButton} onClick={handleSignInClick}>
+                <span>SIGN IN</span>
+                <Box sx={menuStyles.playIcon} />
               </Box>
-              <Typography sx={menuStyles.separator}>|</Typography>
-              <Box sx={menuStyles.authItem} onClick={handleSignUpClick}>
-                <UserPlus size={16} style={{ color: "#ffa500" }} />
-                <span>Sign Up</span>
+              <Box sx={menuStyles.authButton} onClick={handleSignUpClick}>
+                <span>SIGN UP</span>
+                <Box sx={menuStyles.playIcon} />
               </Box>
             </>
           )}
@@ -199,13 +132,13 @@ const Auth = () => {
           {/* Mobile Auth */}
           {isMobile && (
             <>
-              <Box sx={menuStyles.mobileAuthItem} onClick={handleSignInClick}>
-                <LogIn size={18} style={{ color: "#ffa500" }} />
-                <span>Sign In</span>
+              <Box sx={menuStyles.mobileAuthButton} onClick={handleSignInClick}>
+                <span>SIGN IN</span>
+                <Box sx={menuStyles.mobilePlayIcon} />
               </Box>
-              <Box sx={menuStyles.mobileAuthItem} onClick={handleSignUpClick}>
-                <UserPlus size={18} style={{ color: "#ffa500" }} />
-                <span>Sign Up</span>
+              <Box sx={menuStyles.mobileAuthButton} onClick={handleSignUpClick}>
+                <span>SIGN UP</span>
+                <Box sx={menuStyles.mobilePlayIcon} />
               </Box>
             </>
           )}
@@ -229,3 +162,4 @@ const Auth = () => {
 }
 
 export default Auth
+
