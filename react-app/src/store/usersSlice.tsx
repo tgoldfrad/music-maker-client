@@ -4,7 +4,7 @@ import { LoginType, UserType } from "../types/UserType";
 import apiClient from "../apiClient";
 import { FileType } from "../types/FileType";
 
-const baseUrl = 'https://music-maker-9rwb.onrender.com/api/auth'
+const baseUrl = 'http://localhost:5035/api/auth'
 
 
 export const getFilesByUser = createAsyncThunk('users/getFiles',async (userId:number, thunkAPI)=>{
