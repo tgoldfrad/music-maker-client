@@ -336,6 +336,7 @@ const UploadFile = () => {
   }
 
   const handleUpload = async () => {
+    debugger;
     Swal.fire({
       title: "Share File",
       text: "Do you want to share this file with others?",
@@ -375,7 +376,11 @@ const UploadFile = () => {
       //setFile(wavFile);
       //console.log(file);
 
-      await UploadFile(wavFile)
+      const wavRes = await UploadFile(wavFile);
+      console.log("wav result");
+      console.log(wavRes);
+
+      
       // convertFile(fileNameToConvert);
     }
   }

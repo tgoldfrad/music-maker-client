@@ -35,7 +35,7 @@ export const menuStyles = {
     flex: "0 0 auto",
     height: "80px",
     width: "180px",
-    backgroundImage: "url(../src/assets/לוגו.png)",
+    backgroundImage: "url(/לוגו.png)",
     backgroundPosition: "center",
     backgroundSize: "cover",
   } as SxProps<Theme>,

@@ -6,11 +6,21 @@
 // export default About
 "use client"
 
-import { Box, Typography, Button } from "@mui/material"
+import { Box, Typography, Button, Modal } from "@mui/material"
 import { MusicNote, Upload, People } from "@mui/icons-material"
 import { aboutStyles } from "../styles/AboutStyle"
+import SignUp from "./user/SignUp"
+import { useState } from "react"
+import { modalStyle } from "../styles/MenuStyle"
 
 const About = () => {
+  const [open, setOpen] = useState(false);
+  const handleSuccess = () => {
+    setOpen(false)
+  }
+  const handleSignUpClick = () => {
+    setOpen(true)
+  }
   const steps = [
     {
       number: 1,
@@ -69,7 +79,7 @@ const About = () => {
               </Box>
 
               <Box sx={aboutStyles.ctaSection}>
-                <Button sx={aboutStyles.ctaButton}>
+                <Button onClick={handleSignUpClick} sx={aboutStyles.ctaButton}>
                   <Upload />
                   Get Started Now
                 </Button>
@@ -77,7 +87,7 @@ const About = () => {
             </Box>
           </Box>
         </Box>
-
+     
         {/* Right Side - Steps */}
         <Box sx={aboutStyles.stepsSection}>
           <Typography sx={aboutStyles.stepsTitle}>How It Works?</Typography>
@@ -123,6 +133,16 @@ const About = () => {
           <MusicNote sx={aboutStyles.floatingNote(2)} style={{ bottom: "20%", right: "15%" }} />
         </Box>
       </Box>
+      <Modal
+        open={open}
+        onClose={() => setOpen(false)}
+        aria-labelledby="auth-modal-title"
+        aria-describedby="auth-modal-description"
+      >
+        <Box sx={modalStyle}>
+          {<SignUp onSuccess={handleSuccess} />}
+        </Box>
+      </Modal>
     </Box>
   )
 }

@@ -262,7 +262,17 @@ export const aboutStyles = {
       boxShadow: "0 0 0 6px rgba(255, 87, 51, 0.3)",
     },
   } as SxProps<Theme>,
-
+ // Modal Style
+ modalStyle: {
+  position: "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+  width: { xs: "90%", sm: 400 },
+  bgcolor: "transparent",
+  border: "none",
+  outline: "none",
+} as SxProps<Theme>,
   // Floating Elements
   floatingNote: (delay: number) =>
     ({
