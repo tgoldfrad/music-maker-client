@@ -113,7 +113,7 @@ const Auth = () => {
 
   return (
     <>
-      {Object.keys(currentUser).length === 0 ? (
+      {Object.keys(currentUser||"").length === 0 ? (
         <>
           {/* Desktop Auth */}
           {!isMobile && (
