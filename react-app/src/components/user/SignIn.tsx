@@ -137,7 +137,6 @@ const SignIn = ({ onSuccess }: { onSuccess: () => void }) => {
     const res = await dispatch(login(data))
     if (res.meta.requestStatus === "fulfilled") {
       onSuccess()
-      console.log("userDto", res.payload?.userDto)
       dispatch(setUser(res.payload.userDto))
       sessionStorage.setItem("token", res.payload.token)
     } else {
