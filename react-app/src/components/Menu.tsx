@@ -69,7 +69,7 @@ import type { RootState } from "../store/store"
 import { menuStyles, navColors } from "../styles/MenuStyle"
 
 const Menu = () => {
-  const currentUser = useSelector((state: RootState) => state.user.currentUser)
+  // const currentUser = useSelector((state: RootState) => state.user.currentUser)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   // const hasUser = Object.keys(currentUser).length > 0

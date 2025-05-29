@@ -193,15 +193,15 @@ export const menuStyles = {
     marginLeft: "2px",
   } as SxProps<Theme>,
 
-  backgroundStyle: (hasUser: boolean) => ({
-    minHeight: hasUser ? "auto" : "calc(100vh - 18px)",
-    backgroundPosition: "center",
-    backgroundSize: "cover",
-    backgroundRepeat: "no-repeat",
-    backgroundImage: hasUser
-      ? "none"
-      : "linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)), url(https://img.freepik.com/free-vector/music-notes-background_23-2151339663.jpg?uid=R194409080&ga=GA1.1.1604458740.1743596294&semt=ais_hybrid)",
-  }),
+  // backgroundStyle: (hasUser: boolean) => ({
+  //   minHeight: hasUser ? "auto" : "calc(100vh - 18px)",
+  //   backgroundPosition: "center",
+  //   backgroundSize: "cover",
+  //   backgroundRepeat: "no-repeat",
+  //   backgroundImage: hasUser
+  //     ? "none"
+  //     : "linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)), url(https://img.freepik.com/free-vector/music-notes-background_23-2151339663.jpg?uid=R194409080&ga=GA1.1.1604458740.1743596294&semt=ais_hybrid)",
+  // }),
 }
 
 export const modalStyle = {
