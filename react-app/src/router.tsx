@@ -1,4 +1,4 @@
-import { createHashRouter } from "react-router";
+import { createBrowserRouter, createHashRouter } from "react-router";
 import AppLayout from "./components/AppLayout";
 // import SignIn from "./components/user/SignIn";
 import UploadFile from "./components/file/UploadFile";
@@ -6,7 +6,7 @@ import UserFiles from "./components/file/UserFiles";
 import AllFiles from "./components/file/AllFiles";
 import About from "./components/About";
 
-export const router = createHashRouter([
+export const router = createBrowserRouter([
     {
       
       path: '/',
