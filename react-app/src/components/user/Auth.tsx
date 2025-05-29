@@ -102,7 +102,6 @@ const Auth = () => {
   }
 
   const handleSignInClick = () => {
-    debugger;
     setOpen(true)
     setIsSignIn(true)
   }
