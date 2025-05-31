@@ -99,7 +99,7 @@ const Menu = () => {
       />
 
       {/* <div style={backgroundStyle}> */}
-        <AppBar position="fixed" sx={menuStyles.appBar}>
+        <AppBar position="sticky" sx={menuStyles.appBar}>
           <Box sx={menuStyles.container}>
             {/* Logo Section - Left */}
             <Box sx={menuStyles.logoSection}>

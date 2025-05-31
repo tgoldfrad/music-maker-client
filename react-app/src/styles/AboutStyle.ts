@@ -167,6 +167,8 @@ export const aboutStyles = {
   // Blue Rounded Triangle Steps - Updated to be larger and colorful
   triangleStep: (stepNumber: number, isReversed = false) =>
     ({
+      marginTop:`${stepNumber!=1 ? "-80px" : "0px"}`,
+
       width: "250px",
       height: "220px",
       position: "relative",
@@ -184,11 +186,11 @@ export const aboutStyles = {
 
   triangleShape: (stepNumber: number) =>
     ({
-      width: "220px",
-      height: "190px",
+      width: "250px",
+      height: "250px",
       backgroundColor: getStepColor(stepNumber),
-      clipPath: "polygon(50% 8%, 8% 92%, 92% 92%)", // More rounded corners
-      borderRadius: "30px", // Very rounded corners
+      clipPath: "polygon(0 0, 0 100%, 100% 50%)",// More rounded corners
+      // borderRadius: "30px", // Very rounded corners
       position: "absolute",
       boxShadow: `0 12px 35px ${getStepShadowColor(stepNumber)}`,
       transition: "all 0.3s ease",
@@ -200,18 +202,18 @@ export const aboutStyles = {
         right: "4px",
         bottom: "4px",
         background: getStepGradient(stepNumber),
-        clipPath: "polygon(50% 8%, 8% 92%, 92% 92%)",
-        borderRadius: "26px",
+        clipPath: "polygon(0 0, 0 100%, 100% 50%)",
+        // borderRadius: "26px",
       },
     }) as SxProps<Theme>,
 
   stepContent: (isReversed = false) =>
     ({
       position: "absolute",
-      top: "55%",
-      left: "50%",
+      top: `${isReversed ? "72%" : "28%"}`,
+      left: "40%",
       transform: `translate(-50%, -50%) ${isReversed ? "rotate(180deg)" : ""}`,
-      textAlign: "center",
+      textAlign : `${isReversed ? "right" : ""}`,
       color: "white",
       zIndex: 10,
       padding: "1.5rem",
@@ -243,25 +245,25 @@ export const aboutStyles = {
   } as SxProps<Theme>,
 
   // Connecting Lines - Updated colors
-  connectingLine: {
-    width: "6px",
-    height: "25px",
-    background: "linear-gradient(to bottom, #ffa500, #ff5733)",
-    borderRadius: "3px",
-    position: "relative",
-    "&::before": {
-      content: '""',
-      position: "absolute",
-      top: "50%",
-      left: "50%",
-      transform: "translate(-50%, -50%)",
-      width: "16px",
-      height: "16px",
-      backgroundColor: "#ff5733",
-      borderRadius: "50%",
-      boxShadow: "0 0 0 6px rgba(255, 87, 51, 0.3)",
-    },
-  } as SxProps<Theme>,
+  // connectingLine: {
+  //   width: "6px",
+  //   height: "25px",
+  //   background: "linear-gradient(to bottom, #ffa500, #ff5733)",
+  //   borderRadius: "3px",
+  //   position: "relative",
+  //   "&::before": {
+  //     content: '""',
+  //     position: "absolute",
+  //     top: "50%",
+  //     left: "50%",
+  //     transform: "translate(-50%, -50%)",
+  //     width: "16px",
+  //     height: "16px",
+  //     backgroundColor: "#ff5733",
+  //     borderRadius: "50%",
+  //     boxShadow: "0 0 0 6px rgba(255, 87, 51, 0.3)",
+  //   },
+  // } as SxProps<Theme>,
  // Modal Style
  modalStyle: {
   position: "absolute",
@@ -381,3 +383,4 @@ function getStepShadowColor(stepNumber: number): string {
   ]
   return shadows[stepNumber - 1] || shadows[0]
 }
+

@@ -91,6 +91,21 @@ const About = () => {
         {/* Right Side - Steps */}
         <Box sx={aboutStyles.stepsSection}>
           <Typography sx={aboutStyles.stepsTitle}>How It Works?</Typography>
+          {/* <Box sx={leftTriangleStyles.container}>
+      <Box sx={leftTriangleStyles.triangle}>
+        <Box sx={leftTriangleStyles.content}>
+          <Typography sx={leftTriangleStyles.number}>{3}</Typography>
+          <Box sx={leftTriangleStyles.textContainer}>
+            <Typography sx={leftTriangleStyles.title}>{"title"}</Typography>
+            {description.map((line, index) => (
+              <Typography key={index} sx={leftTriangleStyles.description}>
+                {line}
+              </Typography>
+            ))}
+          </Box>
+        </Box>
+      </Box>
+    </Box> */}
 
           {/* Desktop Steps */}
           <Box sx={{ display: { xs: "none", lg: "flex" }, ...aboutStyles.stepsContainer }}>
@@ -99,12 +114,12 @@ const About = () => {
                 <Box sx={aboutStyles.triangleStep(step.number, index === 1)}>
                   <Box sx={aboutStyles.triangleShape(step.number)} />
                   <Box sx={aboutStyles.stepContent(index === 1)}>
-                    <Typography sx={aboutStyles.stepNumber}>{step.number}</Typography>
+                    <Typography sx={aboutStyles.stepNumber}>{step.number==2?'.'+step.number:step.number+'.'}</Typography>
                     <Typography sx={aboutStyles.stepTitle}>{step.title}</Typography>
                     <Typography sx={aboutStyles.stepDescription}>{step.description}</Typography>
                   </Box>
                 </Box>
-                {index < steps.length - 1 && <Box sx={aboutStyles.connectingLine} />}
+                {/* {index < steps.length - 1 && <Box sx={aboutStyles.connectingLine} />} */}
               </Box>
             ))}
           </Box>
@@ -128,9 +143,9 @@ const About = () => {
           </Box>
 
           {/* Floating Musical Notes */}
-          <MusicNote sx={aboutStyles.floatingNote(0)} style={{ top: "10%", right: "10%" }} />
-          <MusicNote sx={aboutStyles.floatingNote(1)} style={{ top: "60%", left: "5%" }} />
-          <MusicNote sx={aboutStyles.floatingNote(2)} style={{ bottom: "20%", right: "15%" }} />
+          <MusicNote sx={aboutStyles.floatingNote(0)} style={{ top: "10%", right: "10%" ,color:"#c70039",opacity:"0.5"}} />
+          <MusicNote sx={aboutStyles.floatingNote(1)} style={{ top: "60%", left: "5%" ,color:"#c70039",opacity:"0.5"}} />
+          <MusicNote sx={aboutStyles.floatingNote(2)} style={{ bottom: "53%", right: "27%" ,color:"#c70039",opacity:"0.5"}} />
         </Box>
       </Box>
       <Modal

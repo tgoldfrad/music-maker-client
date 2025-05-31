@@ -5,7 +5,7 @@ export const menuStyles = {
   appBar: {
     backgroundColor: "rgb(9, 17, 40)",
     boxShadow: "0 2px 10px rgba(0,0,0,0.3)",
-    position: "relative",
+    //position: "relative",
     "&::after": {
       content: '""',
       position: "absolute",
@@ -27,6 +27,8 @@ export const menuStyles = {
     minHeight: { xs: "56px", md: "60px" },
     width: "width: calc(100% - 0px);",
     maxWidth: "none",
+    position: "sticky",
+
   } as SxProps<Theme>,
 
   logoSection: {
