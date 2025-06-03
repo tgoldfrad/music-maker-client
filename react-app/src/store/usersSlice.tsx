@@ -4,8 +4,8 @@ import { LoginType, UserType } from "../types/UserType";
 import apiClient from "../apiClient";
 import { FileType } from "../types/FileType";
 
-const baseUrl = 'https://music-maker-server.onrender.com/api/auth'
-// const baseUrl = 'http://localhost:5035/api/auth'
+// const baseUrl = 'https://music-maker-server.onrender.com/api/auth'
+const baseUrl = 'http://localhost:5035/api/auth'
 
 
 

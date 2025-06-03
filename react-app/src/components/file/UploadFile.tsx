@@ -336,7 +336,7 @@ const UploadFile = () => {
   }
 
   const handleUpload = async () => {
-    debugger;
+
     Swal.fire({
       title: "Share File",
       text: "Do you want to share this file with others?",
@@ -359,6 +359,8 @@ const UploadFile = () => {
     const fileToConvert: Partial<FileType> | undefined = await UploadFile(file)
     //fileNameToConvert=await UploadFile();
     const action = await dispatch(convertFile(fileToConvert))
+    console.log(action);
+    
     if (convertFile.fulfilled.match(action)) {
       // action.payload הוא Blob של הקובץ
       const blob = action.payload

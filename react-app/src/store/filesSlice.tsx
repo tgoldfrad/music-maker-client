@@ -68,9 +68,27 @@ export const deleteFile = createAsyncThunk('files/delete', async (fileId: number
     }
 });
 
+// export const convertFile = createAsyncThunk('files/convert', async (fileToConvert: Partial<FileType> | undefined, thunkAPI) => {
+//     try {
+//         debugger;
+//         const response = await apiClient.post(`file/convert`, fileToConvert, { responseType: 'blob' });
+//         return response.data;
+//     } catch (e) {
+//         if (axios.isAxiosError(e)) {
+//             return thunkAPI.rejectWithValue({
+//                 message: e.message,
+//                 code: e.code,
+//             });
+//         }
+//         return thunkAPI.rejectWithValue({ message: 'An unexpected error occurred' });
+//     }
+// });
+
 export const convertFile = createAsyncThunk('files/convert', async (fileToConvert:Partial<FileType>|undefined, thunkAPI) => {
     try {
         const response = await apiClient.post(`file/convert`,fileToConvert, { responseType: 'blob' });
+        console.log(response);
+        
         return response.data;
     } catch (e) {
         return thunkAPI.rejectWithValue(e);
