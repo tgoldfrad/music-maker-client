@@ -218,13 +218,13 @@
 // };
 
 // export default UploadFile
-"use client"
+
 
 "use client"
 
 import type React from "react"
 import { type ChangeEvent, useState } from "react"
-import { Box, Button, Typography } from "@mui/material"
+import { Backdrop, Box, Button, CircularProgress, Typography } from "@mui/material"
 import axios from "axios"
 import { CloudUpload, InsertDriveFile, Upload } from "@mui/icons-material"
 import type { FileType } from "../../types/FileType"
@@ -238,6 +238,8 @@ import { uploadFileStyles } from "../../styles/FileUploadStyle"
 const UploadFile = () => {
   const [file, setFile] = useState<File | null>(null)
   const [message, setMessage] = useState<string>("")
+  const [isLoading, setIsLoading] = useState<boolean>(false)////////
+
   const dispatch = useDispatch<AppDispatch>()
   const currentUser = useSelector((state: RootState) => state.user.currentUser)
   let isShared = false
@@ -337,7 +339,7 @@ const UploadFile = () => {
 
   const handleUpload = async () => {
 
-    Swal.fire({
+   const tempResult = await Swal.fire({
       title: "Share File",
       text: "Do you want to share this file with others?",
       icon: "info", // או כל אייקון אחר שתרצה
@@ -356,6 +358,7 @@ const UploadFile = () => {
         // כאן תוכל להוסיף את הקוד שברצונך להריץ במקרה של שמירה פרטית
       }
     }) //.then()
+       setIsLoading(true) // Start loading////////////-----------------
     const fileToConvert: Partial<FileType> | undefined = await UploadFile(file)
     //fileNameToConvert=await UploadFile();
     const action = await dispatch(convertFile(fileToConvert))
@@ -381,13 +384,14 @@ const UploadFile = () => {
       const wavRes = await UploadFile(wavFile);
       console.log("wav result");
       console.log(wavRes);
-
+      setIsLoading(false) // Stop loading
       
       // convertFile(fileNameToConvert);
     }
   }
 
   return (
+    <>
     <Box sx={uploadFileStyles.mainContainer}>
       <Box sx={uploadFileStyles.uploadCard}>
         {/* Header */}
@@ -435,7 +439,8 @@ const UploadFile = () => {
       <Box sx={uploadFileStyles.actionButtonsContainer}>
         <Button disabled={file==null} sx={uploadFileStyles.uploadButton} onClick={handleUpload}>
           <CloudUpload sx={{ fontSize: "1rem" }} />
-          Upload & Convert
+            {isLoading ? "Processing..." : "Upload & Convert"}
+          {/* Upload & Convert */}
         </Button>
       </Box>
 
@@ -446,6 +451,15 @@ const UploadFile = () => {
         </Box>
       )}
     </Box>
+
+      <Backdrop sx={uploadFileStyles.loadingBackdrop} open={isLoading}>
+        <Box sx={uploadFileStyles.loadingContainer}>
+          <CircularProgress sx={uploadFileStyles.loadingSpinner} size={60} />
+          <Typography sx={uploadFileStyles.loadingText}>Please wait...</Typography>
+          <Typography sx={uploadFileStyles.loadingSubtext}>Uploading and converting your file</Typography>
+        </Box>
+      </Backdrop>
+      </>
   )
 }
 
