@@ -210,7 +210,7 @@ export const aboutStyles = {
   stepContent: (isReversed = false) =>
     ({
       position: "absolute",
-      top: `${isReversed ? "72%" : "28%"}`,
+      top: `${isReversed ? "62%" : "34%"}`,
       left: "40%",
       transform: `translate(-50%, -50%) ${isReversed ? "rotate(180deg)" : ""}`,
       textAlign : `${isReversed ? "right" : ""}`,

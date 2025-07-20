@@ -24,20 +24,37 @@ const About = () => {
   const steps = [
     {
       number: 1,
-      title: "Sign Up / Login",
-      description: "Create account or sign in",
+      title: "Sign Up / Sign In",
+      description: "Create account or login in if you are already registered",
     },
     {
       number: 2,
       title: "Upload & Convert",
-      description: "Select PDF file and convert",
+      description: "Select \"Upload file\" from the menu, choose a PDF file and click \"convert\"",
     },
     {
       number: 3,
       title: "Download Files",
-      description: "Get audio files instantly",
+      description: "The converted music file will download automatically to your computer, you can also access it from your files",
     },
   ]
+  // const steps = [
+  //   {
+  //     number: 1,
+  //     title: "Sign Up / Login",
+  //     description: "Create account or sign in",
+  //   },
+  //   {
+  //     number: 2,
+  //     title: "Upload & Convert",
+  //     description: "Select PDF file and convert",
+  //   },
+  //   {
+  //     number: 3,
+  //     title: "Download Files",
+  //     description: "Get audio files instantly",
+  //   },
+ // ]
 
   const audienceItems = [
     { icon: "🎵", text: "Music enthusiasts who want to hear their sheet music" },
