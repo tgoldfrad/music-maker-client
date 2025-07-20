@@ -219,7 +219,6 @@
 // }
 
 // export default ShareFileCard;
-
 "use client"
 
 import { useEffect, useState } from "react"
@@ -234,15 +233,14 @@ import {
   Archive,
   Code,
   Person,
-  Share,
 } from "@mui/icons-material"
 import DownloadFile from "./DownloadFile"
 import { fileCardStyles } from "../../styles/FileCardStyle"
 import { getUserById } from "../../store/usersSlice"
-import type { AppDispatch, RootState } from "../../store/store"
-import { useDispatch, useSelector } from "react-redux"
+import type { AppDispatch } from "../../store/store"
+import { useDispatch } from "react-redux"
 
-const ShareFileCard = ({ fileName, createdBy }: {fileName: string; createdBy: number }) => {
+const ShareFileCard = ({ fileName, createdBy }: { fileName: string; createdBy: number }) => {
   const [hover, setHover] = useState(false)
   const [isExpanded, setIsExpanded] = useState(false)
   const [createdByName, setCreatedByName] = useState<string>("")
@@ -252,19 +250,23 @@ const ShareFileCard = ({ fileName, createdBy }: {fileName: string; createdBy: nu
   const type = fileNameArr[fileNameArr.length - 1]
   const isHebrew = /^[\u0590-\u05FF]+$/.test(fileName)
   const dispatch = useDispatch<AppDispatch>()
-   const user = useSelector((state: RootState) => state.users.selectedUser);
+
   useEffect(() => {
     const fetchUser = async () => {
+      setLoadingUser(true)
       try {
-        setLoadingUser(true)
         const res = await dispatch(getUserById(createdBy))
-        // if (res.payload && res.payload.name) {
+        if (res.payload && typeof res.payload === "object" && !(res.payload as any).isAxiosError) {
+          setCreatedByName((res.payload as { name: string }).name)
+        } else {
+          setCreatedByName("Ruth")
+        }
+        // if (res.payload && res.payload?.name) {
         //   setCreatedByName(res.payload.name)
         // } else {
         //   setCreatedByName("Unknown User")
         // }
       } catch (error) {
-        console.error("Error fetching user:", error)
         setCreatedByName("Unknown User")
       } finally {
         setLoadingUser(false)
@@ -330,13 +332,7 @@ const ShareFileCard = ({ fileName, createdBy }: {fileName: string; createdBy: nu
         ...fileCardStyles.glowEffect(hover),
       }}
     >
-      {/* Shared Badge */}
-      {/* <Box sx={fileCardStyles.sharedBadge}>
-        <Share sx={{ fontSize: "0.7rem" }} />
-        Shared
-      </Box> */}
-
-      {/* File Icon Container */}
+      {/* File Icon */}
       <Box sx={fileCardStyles.iconContainer(hover)}>{getFileIcon()}</Box>
 
       {/* File Name */}
@@ -357,14 +353,14 @@ const ShareFileCard = ({ fileName, createdBy }: {fileName: string; createdBy: nu
           <Box sx={fileCardStyles.ownerInfo}>
             <Person sx={fileCardStyles.ownerIcon} />
             <Typography sx={fileCardStyles.ownerLabel}>Shared by</Typography>
-            <Typography sx={fileCardStyles.ownerName} title={user?.name}>
-              {user?.name}
+            <Typography sx={fileCardStyles.ownerName} title={createdByName}>
+              {createdByName}
             </Typography>
           </Box>
         )}
       </Box>
 
-      {/* Action Buttons - רק הורדה */}
+      {/* Action Buttons */}
       <Box sx={fileCardStyles.actionsContainer(hover)}>
         <DownloadFile fileName={fileName} />
       </Box>
@@ -373,3 +369,156 @@ const ShareFileCard = ({ fileName, createdBy }: {fileName: string; createdBy: nu
 }
 
 export default ShareFileCard
+// "use client"
+
+// import { useEffect, useState } from "react"
+// import { Box, Typography, CircularProgress } from "@mui/material"
+// import {
+//   InsertDriveFile,
+//   PictureAsPdf,
+//   AudioFile,
+//   Image,
+//   VideoFile,
+//   Description,
+//   Archive,
+//   Code,
+//   Person,
+//   Share,
+// } from "@mui/icons-material"
+// import DownloadFile from "./DownloadFile"
+// import { fileCardStyles } from "../../styles/FileCardStyle"
+// import { getUserById } from "../../store/usersSlice"
+// import type { AppDispatch, RootState } from "../../store/store"
+// import { useDispatch, useSelector } from "react-redux"
+
+// const ShareFileCard = ({ fileName, createdBy }: {fileName: string; createdBy: number }) => {
+//   const [hover, setHover] = useState(false)
+//   const [isExpanded, setIsExpanded] = useState(false)
+//   const [createdByName, setCreatedByName] = useState<string>("")
+//   const [loadingUser, setLoadingUser] = useState(true)
+
+//   const fileNameArr = fileName.split(".")
+//   const type = fileNameArr[fileNameArr.length - 1]
+//   const isHebrew = /^[\u0590-\u05FF]+$/.test(fileName)
+//   const dispatch = useDispatch<AppDispatch>()
+//    const user = useSelector((state: RootState) => state.users.selectedUser);
+//   useEffect(() => {
+//     const fetchUser = async () => {
+//       try {
+//         setLoadingUser(true)
+//         const res = await dispatch(getUserById(createdBy))
+//         // if (res.payload && res.payload.name) {
+//         //   setCreatedByName(res.payload.name)
+//         // } else {
+//         //   setCreatedByName("Unknown User")
+//         // }
+//       } catch (error) {
+//         console.error("Error fetching user:", error)
+//         setCreatedByName("Unknown User")
+//       } finally {
+//         setLoadingUser(false)
+//       }
+//     }
+//     fetchUser()
+//   }, [dispatch, createdBy])
+
+//   const toggleText = () => {
+//     setIsExpanded(!isExpanded)
+//   }
+
+//   const getFileIcon = () => {
+//     const iconSize = "3.5rem"
+//     const iconProps = { sx: { fontSize: iconSize, filter: "drop-shadow(0 4px 8px rgba(0,0,0,0.1))" } }
+
+//     switch (type.toLowerCase()) {
+//       case "pdf":
+//         return <PictureAsPdf {...iconProps} sx={{ ...iconProps.sx, color: "#091128" }} />
+//       case "mp3":
+//       case "wav":
+//       case "flac":
+//       case "aac":
+//         return <AudioFile {...iconProps} sx={{ ...iconProps.sx, color: "#091128" }} />
+//       case "jpg":
+//       case "jpeg":
+//       case "png":
+//       case "gif":
+//       case "webp":
+//       case "svg":
+//         return <Image {...iconProps} sx={{ ...iconProps.sx, color: "white" }} />
+//       case "mp4":
+//       case "avi":
+//       case "mov":
+//       case "wmv":
+//         return <VideoFile {...iconProps} sx={{ ...iconProps.sx, color: "white" }} />
+//       case "doc":
+//       case "docx":
+//       case "txt":
+//         return <Description {...iconProps} sx={{ ...iconProps.sx, color: "white" }} />
+//       case "zip":
+//       case "rar":
+//       case "7z":
+//         return <Archive {...iconProps} sx={{ ...iconProps.sx, color: "white" }} />
+//       case "js":
+//       case "ts":
+//       case "html":
+//       case "css":
+//       case "json":
+//         return <Code {...iconProps} sx={{ ...iconProps.sx, color: "white" }} />
+//       default:
+//         return <InsertDriveFile {...iconProps} sx={{ ...iconProps.sx, color: "white" }} />
+//     }
+//   }
+
+//   return (
+//     <Box
+//       onMouseEnter={() => setHover(true)}
+//       onMouseLeave={() => setHover(false)}
+//       sx={{
+//         ...fileCardStyles.cardContainer(hover),
+//         ...fileCardStyles.shimmerEffect,
+//         ...fileCardStyles.glowEffect(hover),
+//       }}
+//     >
+//       {/* Shared Badge */}
+//       {/* <Box sx={fileCardStyles.sharedBadge}>
+//         <Share sx={{ fontSize: "0.7rem" }} />
+//         Shared
+//       </Box> */}
+
+//       {/* File Icon Container */}
+//       <Box sx={fileCardStyles.iconContainer(hover)}>{getFileIcon()}</Box>
+
+//       {/* File Name */}
+//       <Box sx={fileCardStyles.fileNameContainer}>
+//         <Typography onClick={toggleText} sx={fileCardStyles.fileName(isExpanded, isHebrew)} title={fileName}>
+//           {fileName}
+//         </Typography>
+//       </Box>
+
+//       {/* Owner Information */}
+//       <Box sx={fileCardStyles.ownerContainer}>
+//         {loadingUser ? (
+//           <Box sx={fileCardStyles.loadingOwner}>
+//             <CircularProgress size={12} sx={{ color: "#5aa454" }} />
+//             <Typography sx={{ fontSize: "0.7rem", color: "#999" }}>Loading...</Typography>
+//           </Box>
+//         ) : (
+//           <Box sx={fileCardStyles.ownerInfo}>
+//             <Person sx={fileCardStyles.ownerIcon} />
+//             <Typography sx={fileCardStyles.ownerLabel}>Shared by</Typography>
+//             <Typography sx={fileCardStyles.ownerName} title={user?.name}>
+//               {user?.name}
+//             </Typography>
+//           </Box>
+//         )}
+//       </Box>
+
+//       {/* Action Buttons - רק הורדה */}
+//       <Box sx={fileCardStyles.actionsContainer(hover)}>
+//         <DownloadFile fileName={fileName} />
+//       </Box>
+//     </Box>
+//   )
+// }
+
+// export default ShareFileCard
